@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Оргкровля и К</title>
+	<link media="all" rel="stylesheet" href="{% static 'css/all.css' %}">
+	<link rel="stylesheet" href="{% static 'js/fancyBox/source/jquery.fancybox.css' %}" media="screen">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="{% static 'js/fancyBox/lib/jquery.mousewheel-3.0.6.pack.js' %}"></script>
+	<script  src="{% static 'js/fancyBox/source/jquery.fancybox.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="w1">
+			<header id="header">
+				<div class="wrap-holder">
+					<strong class="logo"><a href="#">Оргкровля и К</a></strong>
+					<nav id="nav">
+						<a href="#" class="opener js-opener">open menu</a>
+						<ul>
+							<li><a  href="{% url 'index' %}">Главная</a></li>
+							<li><a href="{% url 'articles' %}">Статьи</a></li>
+							<li><a href="/gallery/">Объекты</a></li>
+							<li><a href="{% url 'contact' %}">Контакты</a></li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<main id="main">
+				        {% block content %}
+                        {% endblock %}
+			</main>
+		</div>
+		<footer id="footer">
+			<div class="f1">
+				<div class="f2">
+					<div class="nav-holder">
+						<ul class="navigation">
+							<li><a href="#">Главная</a></li>
+							<li><a href="#">Статьи</a></li>
+							<li><a href="#">Объекты</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="contact-holder">
+						<ul class="contact-list">
+							<li class="address"><address>ул. Мира, 55</address></li>
+							<li class="phone">+38 /057/ 751-38-89 <br />+38 /057/ 751-38-89</li>
+							<li class="mail"><a href="mailto:&#115;&#111;&#107;&#117;&#115;&#104;&#101;&#118;&#064;&#111;&#114;&#103;&#107;&#114;&#111;&#118;&#108;&#121;&#097;&#046;&#099;&#111;&#109;">&#115;&#111;&#107;&#117;&#115;&#104;&#101;&#118;&#064;&#111;&#114;&#103;&#107;&#114;&#111;&#118;&#108;&#121;&#097;&#046;&#099;&#111;&#109;</a></li>
+						</ul>
+					</div>
+					<div class="bottom-footer"><div class="wrap-holder">Все права защищены &copy; 2014 www.orgkrovliya.com</div></div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>

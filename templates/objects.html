@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% block content %}
+
+{% for album in album_list %}
+            {% if album.get_head  or album.user == request.user %}
+            <div class='album'>
+                <div class='album-head'>
+                    <a href="{{ album.get_absolute_url }}">
+                    {% if album.get_head %}
+                        {% thumbnail album.get_head.image "150x150" crop='center' as album_head %}
+                            <img class="preview" {% if album.name %} alt="{{ album.name }}" {% endif %} src="{{ album_head.url }}">
+                        {% endthumbnail %}
+                    {% else %}
+                        [{% trans "Empty album" %}]
+                    {% endif %}
+                    <br>
+                    <span class="album-name">{{ album.name }}</span>
+                    {% if not view_user and IMAGESTORE_SHOW_USER %}
+                        <br>
+                        <span class="album-user">
+                            {% trans "user" %}: {{ album.user }}
+                        </span>
+                    {% endif %}
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+
+				<!--<div class="wrap-holder">-->
+					<!--<div id="content">-->
+						<!--<h1>Объекты</h1>-->
+						<!--<div class="objects-list">-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-06.jpg' %}" alt="" /><span>СРЦ парк Горького 02.07.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-07.jpg' %}" alt="" /><span>Пос. Южное (частный дом) <br />13.11-8.12.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-08.jpg' %}" alt="" /><span>Цех №1, 01.11.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-09.jpg' %}" alt="" /><span>Эсхар, 11.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-10.jpg' %}" alt="" /><span>Кочеток, 13.11-8.12.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-11.jpg' %}" alt="" /><span>Частный дом, ул. Киевская, <br />01.11.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-06.jpg' %}" alt="" /><span>СРЦ парк Горького 02.07.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-07.jpg' %}" alt="" /><span>Пос. Южное (частный дом) <br />13.11-8.12.2012г.</span></a></div>-->
+							<!--<div class="item"><a href="#"><img src="{% static 'images/img-08.jpg' %}" alt="" /><span>Цех №1, 01.11.2012г.</span></a></div>-->
+						<!--</div>-->
+						<!--<div class="pagination">-->
+							<!--<ul>-->
+								<!--<li><a class="prev" href="#">prev</a></li>-->
+								<!--<li><strong>1</strong></li>-->
+								<!--<li><a href="#">2</a></li>-->
+								<!--<li><a href="#">3</a></li>-->
+								<!--<li><a href="#">4</a></li>-->
+								<!--<li><a href="#">5</a></li>-->
+								<!--<li><a class="next" href="#">next</a></li>-->
+							<!--</ul>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			{% endblock %}

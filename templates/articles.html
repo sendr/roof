@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+				<div class="wrap-holder">
+					<div id="content">
+						<h1>Cтатьи</h1>
+						<section class="article-list">
+              {% for article in object_list %}
+							<article class="article">
+								<div class="image-holder">
+									<a href="#"><img src="{%if article.image%}{{ article.image.url }}{%endif%}" alt="" width="158" height="158" /></a>
+								</div>
+								<div class="description">
+									<h1><a href="#">{{ article.name }}</a></h1>
+									<time datetime="2014-04-11 19:00">11 апреля 2014, 15:39:02 </time>
+									<p>{{ article.content|safe|slice:":200" }}...</p>
+									<a href="{% url 'sel_atr' article.id %}" class="button">Читать статью</a>
+								</div>
+							</article>
+              {% endfor %}
+						</section>
+						<div class="pagination">
+              <ul>
+                <li {% if not page_obj.has_previous %}style="display: none;"{% endif %}>
+                  <a class="prev" href="{% if page_obj.has_previous%}?page={{page_obj.previous_page_number}}{%else%}#{%endif%}">prev</a>
+                </li>
+                {% for page in paginator.page_range %}
+								<!--<li><strong>1</strong></li>-->
+                {% if page %}
+								{% if page == page_obj.number %}
+                <li>
+                  <strong>{{ page }}</strong>
+                </li>
+                {% else %}
+                <li><a href="?page={{ page }}">{{ page }}</a></li>
+                {%endif%}
+                {%endif%}
+                {% endfor %}
+								<li {% if not page_obj.has_next %}style="display: none;"{% endif %}>
+                  <a class="next"  href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}">next</a>
+                </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			{% endblock %}

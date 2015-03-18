@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load tagging_tags %}
+{% block content %}
+				<div class="wrap-holder">
+					<div id="content">
+						<h1>Объекты</h1>
+						<article class="article-post">
+							<img class="alignleft" src="{% static 'images/img-37.jpg' %}" alt="image description" />
+							<h2>{{ art_object.name }}</h2>
+							<time datetime="2014-04-11 19:00">{{ art_object.pub_date|date:"D d M Y h:m" }} </time>
+              {% if art_object.image %}
+              <img src="{{ art_object.image.url }}" alt="{{ art_object.name }}"/>
+              {%endif%}
+              <p>{{ art_object.content|safe }}</p>
+							<ul class="links-list">
+                {% tag_cloud_for_model app.Articles as tags %}
+                {% for tag in tags %}
+								<li><a href="#">{{ tag.id }}</a></li>
+                {% endfor %}
+								<!--<li><a href="#">Производственный цех</a></li>-->
+								<!--<li><a href="#">Частный дом</a></li>-->
+							</ul>
+						</article>
+					</div>
+				</div>
+			{% endblock %}
