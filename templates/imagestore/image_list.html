@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load thumbnail %}
 {% load imagestore_tags %}
+{% block galleery_class %}class="active"{% endblock %}
 {% block content %}
 				<div class="wrap-holder">
 					<div id="content">
@@ -18,50 +19,8 @@
                   </a></div>
                 {% endthumbnail %}
                 {% endfor %}
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="{% static 'images/img-13.jpg' %}"><img src="{% static 'images/img-13.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-14.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-15.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-16.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-17.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-18.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-19.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-20.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-21.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-22.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-23.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-24.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-25.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-26.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-27.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-28.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-29.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-30.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-31.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-32.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-36.jpg"><img src="{% static 'images/img-33.jpg' %}" alt="image description" /></a></div>-->
-								<!--<div class="item"><a class="fancybox-thumb" rel="gallery1" href="images/img-35.jpg"><img src="{% static 'images/img-34.jpg' %}" alt="image description" /></a></div>-->
 							</div>
 						</div>
 					</div>
 				</div>
 			{% endblock %}
-
-
-
-{% comment %}
-
-{% for image in image_list %}
-        {% thumbnail image.image "120x120" crop="center" as im %}
-            <a class="thumb" rel='gallery-image[ilist]' href="{{ image.image.url }}">
-                <img class="preview" {% imagestore_alt image forloop.counter %} src="{{ im.url }}">
-            </a>
-            <a href="{% url '{{ image.get_absolute_url }}' %}">
-                {% if image.title %}
-                    <br><span class='image-title'>{{ image.title }}</span>
-                {% else %}
-                    {% trans 'Info' %}
-                {% endif %}
-            </a>
-        {% endthumbnail %}
-    {% endfor %}
-{% endcomment %}

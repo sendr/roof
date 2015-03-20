@@ -1,51 +1,26 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load thumbnail %}
+{% block galleery_class %}class="active"{% endblock %}
 {% block content %}
 
-{% for album in album_list %}
 <div class="wrap-holder">
   <div id="content">
     <h1>Объекты</h1>
     <div class="objects-list">
-{% thumbnail album.get_head.image "150x150" crop='center' as album_head %}
+      {% for album in album_list %}
+      {% thumbnail album.get_head.image "150x150" crop='center' as album_head %}
       <div class="item">
         <a href="{{ album.get_absolute_url }}">
           <img src="{{ album_head.url }}" alt="{{ album.name }}" />
           <span>{{ album.name }}</span>
         </a>
       </div>
-{% endthumbnail %}
+      {% endthumbnail %}
+      {% endfor %}
     </div>
   </div>
 </div>
-
-
-{%comment%}
-            {% if album.get_head  or album.user == request.user %}
-            <div class='album'>
-                <div class='album-head'>
-                    <a href="{{ album.get_absolute_url }}">
-                    {% if album.get_head %}
-                        {% thumbnail album.get_head.image "150x150" crop='center' as album_head %}
-                            <img class="preview" {% if album.name %} alt="{{ album.name }}" {% endif %} src="{{ album_head.url }}">
-                        {% endthumbnail %}
-                    {% else %}
-                        [{% trans "Empty album" %}]
-                    {% endif %}
-                    <br>
-                    <span class="album-name">{{ album.name }}</span>
-                    {% if not view_user and IMAGESTORE_SHOW_USER %}
-                        <br>
-                        <span class="album-user">
-                            {% trans "user" %}: {{ album.user }}
-                        </span>
-                    {% endif %}
-                    </a>
-                </div>
-            </div>
-            {% endif %}{% endcomment %}
-        {% endfor %}
 
 				<!--<div class="wrap-holder">-->
 					<!--<div id="content">-->

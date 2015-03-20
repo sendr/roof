@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  				<div class="wrap-holder">
+					<div id="content">
+						<h1>Объекты</h1>
+						<article class="article-post">
+							<ul class="links-list">
+                {%for tag in article_items%}
+								<li><a href="{% url 'sel_atr' tag.object.id %}">{{ tag.object }}</a></li>
+                {% endfor %}
+                {%for tag in image_items%}
+								<li><a href="/gallery/"? tag.id>{{ tag }}</a></li>
+                {% endfor %}
+								<!--<li><a href="#">Производственный цех</a></li>-->
+								<!--<li><a href="#">Частный дом</a></li>-->
+							</ul>
+						</article>
+					</div>
+				</div>
+{% endblock %}

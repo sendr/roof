@@ -23,10 +23,10 @@
 					<nav id="nav">
 						<a href="#" class="opener js-opener">open menu</a>
 						<ul>
-							<li><a  href="{% url 'index' %}">Главная</a></li>
-							<li><a href="{% url 'articles' %}">Статьи</a></li>
-							<li><a href="/gallery/">Объекты</a></li>
-							<li><a href="{% url 'contact' %}">Контакты</a></li>
+							<li {% block index_class %}{% endblock %}><a  href="{% url 'index' %}">Главная</a></li>
+							<li {% block articles_class %}{% endblock %}><a href="{% url 'articles' %}">Статьи</a></li>
+							<li {% block galleery_class %}{% endblock %}><a href="/gallery/">Объекты</a></li>
+							<li {% block contact_class %}{% endblock %}><a href="{% url 'contact' %}">Контакты</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -41,10 +41,10 @@
 				<div class="f2">
 					<div class="nav-holder">
 						<ul class="navigation">
-							<li><a href="#">Главная</a></li>
-							<li><a href="#">Статьи</a></li>
-							<li><a href="#">Объекты</a></li>
-							<li><a href="#">Контакты</a></li>
+							<li><a href="{% url 'index' %}">Главная</a></li>
+							<li><a href="{% url 'articles' %}">Статьи</a></li>
+							<li><a href="/gallery/">Объекты</a></li>
+							<li><a href="{% url 'contact' %}">Контакты</a></li>
 						</ul>
 					</div>
 					<div class="contact-holder">

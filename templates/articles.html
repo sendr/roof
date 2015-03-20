@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% block articles_class %}class="active"{% endblock %}
 {% block content %}
 				<div class="wrap-holder">
 					<div id="content">
@@ -12,7 +13,7 @@
 								</div>
 								<div class="description">
 									<h1><a href="#">{{ article.name }}</a></h1>
-									<time datetime="2014-04-11 19:00">11 апреля 2014, 15:39:02 </time>
+									<time datetime="2014-04-11 19:00">{{ article.pub_date|date:"D d M Y h:m" }}</time>
 									<p>{{ article.content|safe|slice:":200" }}...</p>
 									<a href="{% url 'sel_atr' article.id %}" class="button">Читать статью</a>
 								</div>

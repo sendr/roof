@@ -8,36 +8,6 @@ from taggit.managers import TaggableManager
 from tagging.fields import TagField
 
 
-
-# class Entry(models.Model):
-#     name = models.CharField(max_length=100)
-#     date = models.DateTimeField()
-#     image = models.ImageField()
-#     entry_body = models.TextField()
-#     related_entries = models.ForeignKey('self')
-#
-# class Projects(models.Model):
-#     from imagestore.models.album import Album
-#
-#     name =  models.CharField(max_length=100)
-#     descr = models.TextField()
-#     gallery = models.ForeignKey(Album)
-
-#
-# class TagModel(models.Model):
-#     name = models.CharField(max_length=30, blank=True, null=True)
-#
-#     def __unicode__(self):
-#         return self.name
-
-
-# class AlbumTag(Album):
-#     tag = models.ForeignKey(TagModel, blank=True, null=True)
-#
-#     def __unicode__(self):
-#         return self.tag
-
-
 class Articles(models.Model):
     name = models.CharField(max_length=30)
     image = models.ImageField(blank=True, null=True, upload_to='images')
@@ -61,6 +31,10 @@ class Gallery(models.Model):
     tittle = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(upload_to='gallery')
 
+    class Meta():
+        verbose_name = u"Фотогалерея"
+        verbose_name_plural = u"Фотогалерея"
+
     def __unicode__(self):
         return self.tittle
 
@@ -68,6 +42,22 @@ class Gallery(models.Model):
 class IndexContent(models.Model):
     tittle = models.CharField(max_length=30)
     content = HTMLField(blank=True, null=True)
+
+    class Meta():
+        verbose_name = u"О нас"
+        verbose_name_plural = u"О нас"
+
+    def __unicode__(self):
+        return self.tittle
+
+
+class Contact(models.Model):
+    tittle = models.CharField(max_length=50)
+    content = HTMLField(blank=True, null=True)
+
+    class Meta():
+        verbose_name = u'Контакты'
+        verbose_name_plural = u'Контакты'
 
     def __unicode__(self):
         return self.tittle
