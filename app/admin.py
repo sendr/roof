@@ -9,9 +9,17 @@ class ArticlesAdmin(MCEFilebrowserAdmin):
     pass
 
 
+class IndexContentAdmin(MCEFilebrowserAdmin):
+    pass
+
+
+class ContactAdmin(MCEFilebrowserAdmin):
+    pass
+
+
 admin.site.register(Articles, ArticlesAdmin)
 admin.site.register(Gallery)
-admin.site.register(IndexContent)
-admin.site.register(Contact)
+admin.site.register(IndexContent, IndexContentAdmin)
+admin.site.register(Contact, ContactAdmin)
 
 
