@@ -10,10 +10,11 @@ from tagging.fields import TagField
 
 class Articles(models.Model):
     name = models.CharField(max_length=30)
+    slug = models.CharField(max_length=30, unique=True)
     image = models.ImageField(blank=True, null=True, upload_to='images')
     pub_date = models.DateTimeField(default=timezone.now())
     content = HTMLField(blank=True, null=True)
-    order = models.IntegerField(blank=True, null=True)
+    order = models.IntegerField(default=0)
     is_public = models.BooleanField('Is public', default=True)
     tags = TagField(blank=True)
 

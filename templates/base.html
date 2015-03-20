@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load chunks %}
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,7 @@
 		<div class="w1">
 			<header id="header">
 				<div class="wrap-holder">
-					<strong class="logo"><a href="#">Оргкровля и К</a></strong>
+					<strong class="logo"><a href="{% url 'index' %}">Оргкровля и К</a></strong>
 					<nav id="nav">
 						<a href="#" class="opener js-opener">open menu</a>
 						<ul>
@@ -32,8 +33,8 @@
 				</div>
 			</header>
 			<main id="main">
-				        {% block content %}
-                        {% endblock %}
+				{% block content %}
+        {% endblock %}
 			</main>
 		</div>
 		<footer id="footer">
@@ -49,9 +50,9 @@
 					</div>
 					<div class="contact-holder">
 						<ul class="contact-list">
-							<li class="address"><address>ул. Мира, 55</address></li>
-							<li class="phone">+38 /057/ 751-38-89 <br />+38 /057/ 751-38-89</li>
-							<li class="mail"><a href="mailto:&#115;&#111;&#107;&#117;&#115;&#104;&#101;&#118;&#064;&#111;&#114;&#103;&#107;&#114;&#111;&#118;&#108;&#121;&#097;&#046;&#099;&#111;&#109;">&#115;&#111;&#107;&#117;&#115;&#104;&#101;&#118;&#064;&#111;&#114;&#103;&#107;&#114;&#111;&#118;&#108;&#121;&#097;&#046;&#099;&#111;&#109;</a></li>
+							<li class="address"><address>{% chunk 'address' %}</address></li>
+							<li class="phone">{% chunk "phone" %}</li>
+							<li class="mail"><a href="mailto:{% chunk 'email' %}">{% chunk 'email' %}</a></li>
 						</ul>
 					</div>
 					<div class="bottom-footer"><div class="wrap-holder">Все права защищены &copy; 2014 www.orgkrovliya.com</div></div>

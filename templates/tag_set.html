@@ -8,10 +8,12 @@
 						<article class="article-post">
 							<ul class="links-list">
                 {%for tag in article_items%}
-								<li><a href="{% url 'sel_atr' tag.object.id %}">{{ tag.object }}</a></li>
+                {% if tag.object.is_public %}
+								<li><a href="{% url 'sel_atr' tag.object.slug %}">{{ tag.object }}</a></li>
+                {% endif %}
                 {% endfor %}
                 {%for tag in image_items%}
-								<li><a href="/gallery/"? tag.id>{{ tag }}</a></li>
+								<li><a href="/gallery/album/{{tag.id}}">{{ tag }}</a></li>
                 {% endfor %}
 								<!--<li><a href="#">Производственный цех</a></li>-->
 								<!--<li><a href="#">Частный дом</a></li>-->

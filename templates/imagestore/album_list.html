@@ -2,51 +2,51 @@
 {% load staticfiles %}
 {% load thumbnail %}
 {% block galleery_class %}class="active"{% endblock %}
-{% block content %}
 
-<div class="wrap-holder">
-  <div id="content">
-    <h1>Объекты</h1>
-    <div class="objects-list">
-      {% for album in album_list %}
-      {% thumbnail album.get_head.image "150x150" crop='center' as album_head %}
-      <div class="item">
-        <a href="{{ album.get_absolute_url }}">
-          <img src="{{ album_head.url }}" alt="{{ album.name }}" />
-          <span>{{ album.name }}</span>
-        </a>
+{% block content %}
+  <div class="wrap-holder">
+    <div id="content">
+      <h1>Объекты</h1>
+      <div class="objects-list">
+        {% for album in album_list %}
+        {% thumbnail album.get_head.image "150x150" crop='center' as album_head %}
+        <div class="item">
+          <a href="{{ album.get_absolute_url }}">
+            <img src="{{ album_head.url }}" alt="{{ album.name }}" />
+            <span>{{ album.name }}</span>
+          </a>
+        </div>
+        {% endthumbnail %}
+        {% endfor %}
       </div>
-      {% endthumbnail %}
-      {% endfor %}
     </div>
   </div>
-</div>
 
-				<!--<div class="wrap-holder">-->
-					<!--<div id="content">-->
-						<!--<h1>Объекты</h1>-->
-						<!--<div class="objects-list">-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-06.jpg' %}" alt="" /><span>СРЦ парк Горького 02.07.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-07.jpg' %}" alt="" /><span>Пос. Южное (частный дом) <br />13.11-8.12.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-08.jpg' %}" alt="" /><span>Цех №1, 01.11.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-09.jpg' %}" alt="" /><span>Эсхар, 11.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-10.jpg' %}" alt="" /><span>Кочеток, 13.11-8.12.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-11.jpg' %}" alt="" /><span>Частный дом, ул. Киевская, <br />01.11.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-06.jpg' %}" alt="" /><span>СРЦ парк Горького 02.07.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-07.jpg' %}" alt="" /><span>Пос. Южное (частный дом) <br />13.11-8.12.2012г.</span></a></div>-->
-							<!--<div class="item"><a href="#"><img src="{% static 'images/img-08.jpg' %}" alt="" /><span>Цех №1, 01.11.2012г.</span></a></div>-->
-						<!--</div>-->
-						<!--<div class="pagination">-->
-							<!--<ul>-->
-								<!--<li><a class="prev" href="#">prev</a></li>-->
-								<!--<li><strong>1</strong></li>-->
-								<!--<li><a href="#">2</a></li>-->
-								<!--<li><a href="#">3</a></li>-->
-								<!--<li><a href="#">4</a></li>-->
-								<!--<li><a href="#">5</a></li>-->
-								<!--<li><a class="next" href="#">next</a></li>-->
-							<!--</ul>-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-			{% endblock %}
+
+
+  {% if is_paginated %}
+    <div class="pagination">
+      <ul>
+        <li {% if not page_obj.has_previous %}style="display: none;"{% endif %}>
+          <a class="prev" href="{% if page_obj.has_previous%}?page={{page_obj.previous_page_number}}{%else%}#{%endif%}">prev</a>
+        </li>
+        {% for page in paginator.page_range %}
+        <!--<li><strong>1</strong></li>-->
+        {% if page %}
+        {% if page == page_obj.number %}
+        <li>
+          <strong>{{ page }}</strong>
+        </li>
+        {% else %}
+        <li><a href="?page={{ page }}">{{ page }}</a></li>
+        {%endif%}
+        {%endif%}
+        {% endfor %}
+        <li {% if not page_obj.has_next %}style="display: none;"{% endif %}>
+          <a class="next"  href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}">next</a>
+        </li>
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}
+

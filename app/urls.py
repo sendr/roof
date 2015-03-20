@@ -11,9 +11,9 @@ urlpatterns = patterns('',
        url(r'^articles/$', ArticlesPageView.as_view(), name='articles'),
        url(r'^contact/$', ContactPageView.as_view(), name='contact'),
        url(r'^objects$', ObjectsPageView.as_view(), name='objects'),
-       url(r'^sel-art/(?P<pk>\d+)$', SelArtPageView.as_view(), name='sel_atr'),
+       url(r'^article/(?P<slug>\w+)$', SelArtPageView.as_view(), name='sel_atr'),
        url(r'^tag_set/(?P<pk>\d+)$', TagSetView.as_view(), name='tag_set'),
-       url(r'^sel-obj/$', SelObjPageView.as_view(), name='sel_obj'),
+       # url(r'^object/$', SelObjPageView.as_view(), name='sel_obj'),
 
 )
 
