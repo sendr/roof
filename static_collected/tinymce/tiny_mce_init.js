@@ -1,3 +1,0 @@
-tinyMCE.init({
-    mode:"textareas"
-});
