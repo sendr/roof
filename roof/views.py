@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
-from app.models import Gallery, Articles, IndexContent, Contact
+from roof.models import Gallery, Articles, IndexContent, Contact
 from tagging.models import Tag
 from imagestore.models import Album, Image
 from django.contrib.contenttypes.models import ContentType

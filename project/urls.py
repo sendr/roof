@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^', include('app.urls'), name='main'),
+    url(r'^', include('roof.urls'), name='main'),
     # url(r'^blog/', include('blog.urls')),
     # url(r'^admin/filebrowser/', include(site.urls)),
     # url(r'^grappelli/', include('grappelli.urls')),
