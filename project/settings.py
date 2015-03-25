@@ -67,13 +67,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -110,3 +110,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_resizing' : 'true',
     'width': '800',
 }
+
+try:
+    from project.local_settings import *
+except Exception as e:
+    print '\033[93mWARNING: ', e.message, '\033[0m'

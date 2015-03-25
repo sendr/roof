@@ -48,10 +48,14 @@ function initLightbox () {
 
 //Owl Callery
 function initCarousel () {
-    $('.owl-carousel').owlCarousel({
-        items:1,
-        responsiveRefreshRate:100,
-        responsiveBaseElement:'.owl-carousel',
-        autoHeight:true
-    });
+    var img = new Image();
+    img.src = $('.image-carusel').attr('src');
+    img.onload = function(){
+        $('.owl-carousel').owlCarousel({
+            items:1,
+            responsiveRefreshRate:100,
+            responsiveBaseElement:'.owl-carousel',
+            autoHeight:true
+            });
+         }
 };
