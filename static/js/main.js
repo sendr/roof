@@ -50,8 +50,6 @@ function initLightbox () {
 function initCarousel () {
     var img = new Image();
     img.src = $('.image-carusel').attr('src');
-    console.log($('.image-carusel'));
-    console.log(img.src);
     img.onload = function(){
         $('.owl-carousel').owlCarousel({
             items:1,

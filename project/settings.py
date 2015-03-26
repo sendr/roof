@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'mce_filebrowser',
     'imagestore',
     'sorl.thumbnail',
-    'chunks',
+    # 'chunks',
     'tagging',
     # "taggit",
     # 'django_extensions',

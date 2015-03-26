@@ -1,24 +1,63 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load extras %}
+{% load thumbnail %}
 
 {% block content %}
   				<div class="wrap-holder">
-					<div id="content">
-						<h1>Объекты</h1>
-						<article class="article-post">
-							<ul class="links-list">
-                {%for tag in article_items%}
-                {% if tag.object.is_public %}
-								<li><a href="{% url 'sel_atr' tag.object.slug %}">{{ tag.object }}</a></li>
+            <div id="content">
+              <h1>Объекты</h1>
+              {% for item in items %}
+              {% if item.object.is_article %}
+              <section class="article-list">
+                {% if item.object.is_public %}
+                <article class="article">
+                    <div class="image-holder">
+                      <a href="#"><img src="{%if item.object.image%}{{ item.object.image.url }}{%endif%}" alt="" width="158" height="158" /></a>
+                    </div>
+                    <div class="description">
+                      <h1><a href="#">{{ item.object.name }}</a></h1>
+                      <time datetime="2014-04-11 19:00">{{ item.object.pub_date|date:"D d M Y h:m" }}</time>
+                      <p>{{ item.object.content|safe|slice:":200" }}...</p>
+                      <a href="{% url 'sel_atr' item.object.slug %}" class="button">Читать статью</a>
+                    </div>
+                  </article>
                 {% endif %}
-                {% endfor %}
-                {%for tag in image_items%}
-								<li><a href="/gallery/album/{{tag.id}}">{{ tag }}</a></li>
-                {% endfor %}
-								<!--<li><a href="#">Производственный цех</a></li>-->
-								<!--<li><a href="#">Частный дом</a></li>-->
-							</ul>
-						</article>
-					</div>
-				</div>
+              </section>
+              {%else%}
+              <div class="objects-list">
+                {% thumbnail item.get_head.image "150x150" crop='center' as album_head %}
+                <div class="item">
+                  <a href="{{ item.get_absolute_url }}">
+                    <img src="{{ album_head.url }}" alt="{{ item.name }}" />
+                    <span>{{ item.name }}</span>
+                  </a>
+                </div>
+                {% endthumbnail %}
+              </div>
+              {%endif%}
+              {% endfor %}
+              {%if paginator.num_pages > 1%}
+              <div class="pagination">
+                <ul>
+                  <li {% if not items.has_previous %}style="display: none;"{% endif %}>
+                    <a class="prev" href="{% if items.has_previous%}?page={{items.previous_page_number}}{%else%}#{%endif%}">prev</a>
+                  </li>
+                  {% for page in paginator.page_range|get_before:items.number %}
+                  <!--<li><strong>1</strong></li>-->
+                  <li><a href="?page={{ page }}">{{ page }}</a></li>
+                  {% endfor %}
+                  <li><strong>{{ items.number }}</strong></li>
+                  {% for page in paginator.page_range|get_after:items.number %}
+                  <!--<li><strong>1</strong></li>-->
+                  <li><a href="?page={{ page }}">{{ page }}</a></li>
+                  {% endfor %}
+                  <li {% if not items.has_next %}style="display: none;"{% endif %}>
+                    <a class="next"  href="{% if items.has_next %}?page={{ items.next_page_number }}{% else %}#{% endif %}">next</a>
+                  </li>
+                </ul>
+              </div>
+              {%endif%}
+            </div>
+          </div>
 {% endblock %}

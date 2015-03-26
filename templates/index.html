@@ -7,9 +7,15 @@
 					<div class="contact-block">
 						<div class="frame">
 							<ul>
-								<li class="phone">{% chunk "phone" %}</li>
-								<li class="mail"><a href="mailto:{% chunk 'email' %}">{% chunk 'email' %}</a></li>
-								<li class="address"><address>{% chunk 'address' %}</address></li>
+                {% for phone in phones %}
+								<li class="phone">{{ phone.name }}</li>
+                {% endfor %}
+                {% for email in emails %}
+								<li class="mail"><a href="mailto:{{ email.name }}">{{ email.name }}</a></li>
+                {% endfor %}
+                {% for address in addresses %}
+								<li class="address"><address>{{ address.name }}</address></li>
+                {% endfor %}
 							</ul>
 						</div>
 						<a href="/gallery/" class="button">наши объекты</a>

@@ -25,6 +25,10 @@ class Articles(models.Model):
     def __unicode__(self):
         return self.name
 
+    @property
+    def is_article(self):
+        return True
+
 
 # tagging.register(Articles)
 
@@ -62,3 +66,36 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return self.tittle
+
+
+class Phone(models.Model):
+    name = models.CharField(max_length=30)
+
+    class Meta():
+        verbose_name = u'Телефон'
+        verbose_name_plural = u'Телефоны'
+
+    def __unicode__(self):
+        return self.name
+
+
+class Email(models.Model):
+    name = models.EmailField(max_length=30)
+
+    class Meta():
+        verbose_name = u'Электронная почта'
+        verbose_name_plural = u'Электронная почта'
+
+    def __unicode__(self):
+        return self.name
+
+
+class Address(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta():
+        verbose_name = u'Адрес'
+        verbose_name_plural = u'Адреса'
+
+    def __unicode__(self):
+        return self.name
