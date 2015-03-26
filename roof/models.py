@@ -37,7 +37,7 @@ class Gallery(models.Model):
         verbose_name_plural = u"Фотогалерея"
 
     def __unicode__(self):
-        return self.title
+        return self.tittle
 
 
 class IndexContent(models.Model):
@@ -49,7 +49,7 @@ class IndexContent(models.Model):
         verbose_name_plural = u"О нас"
 
     def __unicode__(self):
-        return self.title
+        return self.tittle
 
 
 class Contact(models.Model):

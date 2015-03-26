@@ -94,8 +94,8 @@ THUMBNAIL_DEBUG = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = (
