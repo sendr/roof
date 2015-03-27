@@ -7,12 +7,11 @@
 					<div id="content">
 						<h1>Статьи</h1>
 						<article class="article-post">
-							<img class="alignleft" src="{% static 'images/img-37.jpg' %}" alt="image description" />
+							{% if art_object.image %}
+              <img class="alignleft" src="{{ art_object.image.url }}" alt="{{ art_object.name }}"/>
+              {%endif%}
 							<h2>{{ art_object.name }}</h2>
 							<time datetime="2014-04-11 19:00">{{ art_object.pub_date|date:"D d M Y h:m" }} </time>
-              {% if art_object.image %}
-              <img src="{{ art_object.image.url }}" alt="{{ art_object.name }}"/>
-              {%endif%}
               <p>{{ art_object.content|safe }}</p>
 							<ul class="links-list">
                 {% tags_for_object art_object as tags %}
