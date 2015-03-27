@@ -16,7 +16,7 @@
                       <a href="#"><img src="{%if item.object.image%}{{ item.object.image.url }}{%endif%}" alt="" width="158" height="158" /></a>
                     </div>
                     <div class="description">
-                      <h1><a href="#">{{ item.object.name }}</a></h1>
+                      <h1><a href="{% url 'sel_atr' item.object.slug %}">{{ item.object.name }}</a></h1>
                       <time datetime="2014-04-11 19:00">{{ item.object.pub_date|date:"D d M Y h:m" }}</time>
                       <p>{{ item.object.content|safe|slice:":200" }}...</p>
                       <a href="{% url 'sel_atr' item.object.slug %}" class="button">Читать статью</a>

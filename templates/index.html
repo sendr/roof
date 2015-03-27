@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load chunks %}
 {% block index_class %} class="active" {% endblock %}
 {% block content %}
 				<div class="main-banner">
 					<div class="contact-block">
 						<div class="frame">
 							<ul>
-                {% for phone in phones %}
-								<li class="phone">{{ phone.name }}</li>
+                <li class="phone">{% for phone in our_data.phones %}
+								{{ phone.name }}<br>
                 {% endfor %}
-                {% for email in emails %}
-								<li class="mail"><a href="mailto:{{ email.name }}">{{ email.name }}</a></li>
-                {% endfor %}
-                {% for address in addresses %}
-								<li class="address"><address>{{ address.name }}</address></li>
-                {% endfor %}
+                </li>
+                <li class="mail">{% for email in our_data.emails %}
+								<a href="mailto:{{ email.name }}">{{ email.name }}</a><br>
+                {% endfor %}</li>
+                <li class="address">{% for address in our_data.addresses %}
+								<address>{{ address.name }}</address>
+                {% endfor %}</li>
 							</ul>
 						</div>
 						<a href="/gallery/" class="button">наши объекты</a>
@@ -28,22 +28,6 @@
 								<span class="title">{{ item.tittle }} </span>
 							</div>
               {% endfor %}
-							<!--<div class="item">-->
-								<!--<img src="{% static 'images/img-02.jpg' %}" alt="" />-->
-								<!--<span class="title">СРЦ парк Горького в г.Харькове </span>-->
-							<!--</div>-->
-							<!--<div class="item">-->
-								<!--<img src="{% static 'images/img-01.jpg' %}" alt="" />-->
-								<!--<span class="title">СРЦ парк Горького в г.Харькове </span>-->
-							<!--</div>-->
-							<!--<div class="item">-->
-								<!--<img src="{% static 'images/img-02.jpg' %}" alt="" />-->
-								<!--<span class="title">СРЦ парк Горького в г.Харькове </span>-->
-							<!--</div>-->
-							<!--<div class="item">-->
-								<!--<img src="{% static 'images/img-01.jpg' %}" alt="" />-->
-								<!--<span class="title">СРЦ парк Горького в г.Харькове </span>-->
-							<!--</div>-->
 						</div>
 					</div>
 				</div>

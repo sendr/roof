@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load chunks %}
 
 <!DOCTYPE html>
 <html>
@@ -49,9 +48,16 @@
 					</div>
 					<div class="contact-holder">
 						<ul class="contact-list">
-							<li class="address"><address>{% chunk 'address' %}</address></li>
-							<li class="phone">{% chunk "phone" %}</li>
-							<li class="mail"><a href="mailto:{% chunk 'email' %}">{% chunk 'email' %}</a></li>
+							  <li class="address">{% for address in our_data.addresses %}
+								<address>{{ address.name }}</address>
+                {% endfor %}</li>
+							  <li class="phone">{% for phone in our_data.phones %}
+								{{ phone.name }}<br>
+                {% endfor %}
+                </li>
+							  <li class="mail">{% for email in our_data.emails %}
+								<a href="mailto:{{ email.name }}">{{ email.name }}</a><br>
+                {% endfor %}</li>
 						</ul>
 					</div>
 					<div class="bottom-footer"><div class="wrap-holder">Все права защищены &copy; 2014 www.orgkrovliya.com</div></div>
