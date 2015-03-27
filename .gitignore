@@ -1,6 +1,6 @@
+*.pyc
 .idea/
 *.sqlite3
-.pyc
 media/
 migrations/
 static_collected/
