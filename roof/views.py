@@ -49,7 +49,7 @@ class TagSetView(DetailView):
         type_i = ContentType.objects.get_for_model(Image)
         article_items = list(self.object.items.filter(content_type=type_a))
         f = self.object.items.filter(content_type=type_i)
-        image_items = list(set(Album.objects.filter(images=f)))
+        image_items = list(set(Album.objects.filter(images=f.values_list('object_id', flat=True))))
         paginator = Paginator(article_items + image_items, 5)
         page = self.request.GET.get('page')
         try:
