@@ -32,8 +32,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-    # 'grappelli',
-    # 'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,11 +43,7 @@ INSTALLED_APPS = (
     'mce_filebrowser',
     'imagestore',
     'sorl.thumbnail',
-    # 'chunks',
     'tagging',
-    # "taggit",
-    # 'django_extensions',
-
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("project.my_context_processor.put_data",)
@@ -69,16 +63,6 @@ ROOT_URLCONF = 'project.urls'
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -93,8 +77,6 @@ USE_L10N = True
 USE_TZ = True
 
 THUMBNAIL_DEBUG = True
-
-# FILEBROWSER_DIRECTORY = os.path.join(BASE_DIR, 'media/uploads')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

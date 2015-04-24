@@ -15,7 +15,7 @@
 								<div class="description">
 									<h1><a href="{% url 'sel_atr' article.slug %}">{{ article.name }}</a></h1>
 									<time datetime="2014-04-11 19:00">{{ article.pub_date|date:"D d M Y h:m" }}</time>
-									<p>{{ article.content|safe|slice:":200" }}...</p>
+									<p>{{ article.short_desc }}</p>
 									<a href="{% url 'sel_atr' article.slug %}" class="button">Читать статью</a>
 								</div>
 							</article>

@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-# from imagestore.models.image import Image
 from tinymce.models import HTMLField
 from django.utils import timezone
-import tagging
-from taggit.managers import TaggableManager
 from tagging.fields import TagField
 
 
 class Articles(models.Model):
     name = models.CharField(max_length=30)
     slug = models.CharField(max_length=30, unique=True)
+    short_desc = models.CharField('Короткое описание', max_length=200, default='This will be short description')
     image = models.ImageField(blank=True, null=True, upload_to='images')
     pub_date = models.DateTimeField(default=timezone.now())
     content = HTMLField(blank=True, null=True)
@@ -29,8 +27,6 @@ class Articles(models.Model):
     def is_article(self):
         return True
 
-
-# tagging.register(Articles)
 
 class Gallery(models.Model):
     tittle = models.CharField(max_length=30, blank=True, null=True)
