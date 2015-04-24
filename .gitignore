@@ -2,6 +2,5 @@
 .idea/
 *.sqlite3
 media/
-migrations/
 static_collected/
 local_settings.*
